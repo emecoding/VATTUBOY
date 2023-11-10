@@ -10,6 +10,7 @@
 
 #include "Window.hpp"
 #include "Color.hpp"
+#include "Shader.hpp"
 
 class App
 {
