@@ -11,6 +11,7 @@
 #include "Window.hpp"
 #include "Color.hpp"
 #include "Shader.hpp"
+#include "Renderer.hpp"
 
 class App
 {
@@ -28,4 +29,5 @@ class App
          
 
         Window* m_Window;
+        Renderer* m_Renderer;
 };
