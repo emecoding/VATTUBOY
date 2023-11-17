@@ -13,6 +13,7 @@ App::App()
 
     this->initialize_glad();
     this->m_Renderer = new Renderer();
+    this->m_Input = new Input(this->m_Window->get_glfw_window());
 }
 
 void App::initialize_glfw()

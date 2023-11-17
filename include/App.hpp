@@ -12,6 +12,7 @@
 #include "Color.hpp"
 #include "Shader.hpp"
 #include "Renderer.hpp"
+#include "Input.hpp"
 
 class App
 {
@@ -30,4 +31,5 @@ class App
 
         Window* m_Window;
         Renderer* m_Renderer;
+        Input* m_Input;
 };

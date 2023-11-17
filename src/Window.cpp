@@ -44,9 +44,9 @@ void Window::set_bg_color(float r, float g, float b, float a)
     this->m_BGColor.a = a;
 }
 
-void Window::process_window_related_input()
+void Window::process_window_related_input(Input* input)
 {
-    if(glfwGetKey(this->m_GLFWWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    if(input->key_pressed(GLFW_KEY_ESCAPE))
         this->set_window_should_close(true);
 }
 
@@ -61,4 +61,6 @@ bool Window::window_should_close() { return glfwWindowShouldClose(this->m_GLFWWi
 unsigned int Window::get_width() { return this->m_Width; }
 
 unsigned int Window::get_height() { return this->m_Height; }
+
+GLFWwindow* Window::get_glfw_window() { return this->m_GLFWWindow; }
 

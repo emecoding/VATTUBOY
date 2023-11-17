@@ -3,6 +3,7 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
 #include "Color.hpp"
+#include "Input.hpp"
 
 class Window
 {
@@ -18,8 +19,10 @@ class Window
         void poll_events();
         void clear();
         void set_bg_color(float r, float g, float b, float a);
-        void process_window_related_input();
+        void process_window_related_input(Input* input);
         void set_window_should_close(bool value);
+
+        GLFWwindow* get_glfw_window();
 
     private:
         unsigned int m_Width, m_Height;
