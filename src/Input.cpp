@@ -7,5 +7,5 @@ Input::Input(GLFWwindow* glfw_window)
 
 bool Input::key_pressed(unsigned int key)
 {
-    return glfwGetKey(this->m_GLFWWindow, key) == GLFW_PRESS;
+    return glfwGetKey(this->m_GlfwWindow, key) == GLFW_PRESS;
 }

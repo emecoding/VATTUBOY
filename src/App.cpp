@@ -41,7 +41,7 @@ void App::run()
 
     while(!this->m_Window->window_should_close())
     {
-        this->m_Window->process_window_related_input();
+        this->m_Window->process_window_related_input(this->m_Input);
 
         this->m_Window->clear();
 

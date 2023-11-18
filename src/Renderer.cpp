@@ -5,7 +5,7 @@ Renderer::Renderer()
 
 }
 
-void Renderer::generate_triangle()
+unsigned int Renderer::generate_triangle()
 {
     float vertices[] = {
         0.5f, -0.5f, 0.0f,
