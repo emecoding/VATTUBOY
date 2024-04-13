@@ -3,6 +3,7 @@ import pygame
 from VATTUBOY.GUI.window import Window
 
 from VATTUBOY.scenes.mainmenu import MainMenu
+from VATTUBOY.scenes.gamesmenu import GamesMenu
 import VATTUBOY.input.inputManager
 
 from debug import *
@@ -13,7 +14,7 @@ class GUIManager:
 
         self.window = Window(window_width, window_height, window_caption)
 
-        self.__scenes = [MainMenu()] #When game chosen, load all the game scenes into the scenes list and play from there.
+        self.__scenes = [MainMenu(self), GamesMenu(self)] #When game chosen, load all the game scenes into the scenes list and play from there.
         self.__current_scene_index = 0
 
         self.__current_interacting_gui_component = 0
@@ -42,10 +43,14 @@ class GUIManager:
             if VATTUBOY.input.inputManager.get_joystick_button(0, gui_component.get_mapped_button()):
                 interactable_gui_components[self.__current_interacting_gui_component].is_hovered_on = False
                 self.__current_interacting_gui_component = gui_component_index
+                interactable_gui_components[self.__current_interacting_gui_component].is_hovered_on = True
+
+                if callable(interactable_gui_components[self.__current_interacting_gui_component].on_click_function):
+                    interactable_gui_components[self.__current_interacting_gui_component].on_click_function()
 
             gui_component_index += 1
 
         if self.__current_interacting_gui_component >= len(interactable_gui_components) or self.__current_interacting_gui_component < 0:
             self.__current_interacting_gui_component = 0
         
-        interactable_gui_components[self.__current_interacting_gui_component].is_hovered_on = True
+        

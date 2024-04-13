@@ -1,9 +1,10 @@
 from VATTUBOY.GUI.surface import Surface
 
 class Scene:
-    def __init__(self, name):
+    def __init__(self, name, gui_manager):
         self.__name = name
         self.__my_scene_surfaces = []
+        self._gui_manager = gui_manager
 
     def initialize(self, window):
         pass

@@ -2,9 +2,10 @@ from VATTUBOY.scenes.scene import Scene
 
 from VATTUBOY.input.inputManager import CROSS_BUTTON, OPTIONS_BUTTON, CIRCLE_BUTTON
 
+
 class MainMenu(Scene):
-    def __init__(self):
-        super().__init__("Main Menu")
+    def __init__(self, gui_manager):
+        super().__init__("Main Menu", gui_manager)
         
     def initialize(self, window):
         super().initialize(window)
@@ -20,6 +21,7 @@ class MainMenu(Scene):
         games_button = main_surface.add_gui_component(window_width/2-button_width/2, window_height/3-button_height/2, button_width, button_height)
         games_button.text = "Games"
         games_button.map_to_button(CROSS_BUTTON, 17)
+        games_button.on_click_function = lambda: self._gui_manager.change_scene(1)
 
         settings_button = main_surface.add_gui_component(window_width/2-button_width/2, window_height/2-button_height/2, button_width, button_height)
         settings_button.text = "Settings"

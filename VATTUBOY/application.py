@@ -19,6 +19,9 @@ class Application:
 
         self.__m_GUI_Manager.change_scene(self.__config_parser["SCENES"]["main_menu"])
 
+    def change_scene(self, index):
+        self.__m_GUI_Manager.change_scene(index)
+
     def run(self):
         while not self.__m_GUI_Manager.window.should_close():
             VATTUBOY.input.inputManager.check_if_any_joysticks_are_connected()

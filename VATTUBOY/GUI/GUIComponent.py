@@ -27,6 +27,8 @@ class GUIComponent:
         self.__button_image_height = 32
         self.__button_image_offset = 10
 
+        self.on_click_function = None
+
     def map_to_button(self, button, button_image):
         self.__mapped_button = button
         self.__button_image = VATTUBOY.resources.resourceManager.get_resource("PS4Buttons").get_sprite(button_image)
