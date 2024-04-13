@@ -21,7 +21,20 @@ class GUIComponent:
         self.antialias = False
         self.font_name = None
 
-        self.map_to_button = None
+        self.__mapped_button = None
+        self.__button_image = None
+        self.__button_image_width = 32
+        self.__button_image_height = 32
+        self.__button_image_offset = 10
+
+    def map_to_button(self, button, button_image):
+        self.__mapped_button = button
+        self.__button_image = VATTUBOY.resources.resourceManager.get_resource("PS4Buttons").get_sprite(button_image)
+        self.__button_image = pygame.transform.scale(self.__button_image, (self.__button_image_width, self.__button_image_height))
+
+
+    def get_mapped_button(self):
+        return self.__mapped_button
 
     def initialize(self):
         self.font_name = VATTUBOY.resources.resourceManager.RESOURCES_CONFIG["default_font"]
@@ -31,7 +44,11 @@ class GUIComponent:
         if self.text != None:
             font = VATTUBOY.resources.resourceManager.get_resource(self.font_name)
             text_obj = font.create_text_surface_object(self.text, self.antialias, self.text_color, bg_color=self.text_bg_color)
-            pygame_surface.blit(text_obj, self.get_text_rect(text_obj))
+            text_rect = self.get_text_rect(text_obj)
+            pygame_surface.blit(text_obj, text_rect)
+
+            if self.__button_image != None:
+                pygame_surface.blit(self.__button_image, (text_rect.x + self.__button_image_offset + text_rect.w, text_rect.y, self.__button_image_width, self.__button_image_height))
 
     def get_pygame_rect(self): return (self.x, self.y, self.width, self.height)
     def get_text_rect(self, text_obj): 

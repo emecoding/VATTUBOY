@@ -38,8 +38,8 @@ class GUIManager:
         for gui_component in interactable_gui_components:
             if gui_component.map_to_button == None:
                 continue
-            
-            if VATTUBOY.input.inputManager.get_joystick_button(0, gui_component.map_to_button):
+
+            if VATTUBOY.input.inputManager.get_joystick_button(0, gui_component.get_mapped_button()):
                 interactable_gui_components[self.__current_interacting_gui_component].is_hovered_on = False
                 self.__current_interacting_gui_component = gui_component_index
 
